@@ -32,6 +32,18 @@ namespace PowerAssertTests
         }
 
         [Test]
+        public void PrintResults2()
+        {
+            var results = new[] {"One", "Two", "Three"};
+            Expression<Func<bool>> expression = () => results.SequenceEqual(new[]{"One", "Two", "Three"});
+            Node constantNode = ExpressionParser.Parse(expression.Body);
+            string[] strings = NodeFormatter.Format(constantNode);
+            string s = string.Join(Environment.NewLine, strings);
+            Console.Out.WriteLine(s);
+        }
+
+
+        [Test]
         [Ignore("This test will fail for demo purposes")]
         public void RunTypeOfExpression()
         {
